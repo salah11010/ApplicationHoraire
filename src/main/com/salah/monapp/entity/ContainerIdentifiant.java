@@ -1,4 +1,5 @@
-package com.salah.monapp.entity;
+package main.com.salah.monapp.entity;
+
 import java.io.*;
 import java.util.*;
 import com.google.gson.Gson;

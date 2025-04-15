@@ -1,7 +1,6 @@
-package com.salah.monapp.Interface;
-
-import com.salah.monapp.entity.ContainerIdentifiant;
-import com.salah.monapp.entity.Identifiant;
+package main.com.salah.monapp.Interface;
+import main.com.salah.monapp.entity.ContainerIdentifiant;
+import main.com.salah.monapp.entity.Identifiant;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,17 +53,28 @@ public class SignUp extends JFrame {
         btnSignUp.addActionListener(e -> {
             String username = userNameField.getText();
             String password = new String(passwordField.getPassword());
+            System.out.println("Tentative d'inscription avec :");
+            System.out.println("Nom d'utilisateur : " + username);
+            System.out.println("Mot de passe : " + password);
             Identifiant identifiant = new Identifiant(username, password);
+            System.out.println("Chargement des identifiants depuis le fichier...");
             ContainerIdentifiant.loadFromFile();
             List<Identifiant> identifiants = ContainerIdentifiant.getAll();
+            System.out.println("Identifiants existants : " + identifiants.size());
             identifiants.add(identifiant);
+            System.out.println("Nouvel identifiant ajouté. Total maintenant : " + identifiants.size());
             ContainerIdentifiant.setAll(identifiants);
+            System.out.println("Sauvegarde des identifiants dans le fichier...");
             ContainerIdentifiant.saveToFile();
+            System.out.println("Sauvegarde terminée.");
             JFrame currentFrame = (JFrame) SwingUtilities.getWindowAncestor(btnSignUp);
             currentFrame.dispose();
+            System.out.println("Fenêtre actuelle fermée.");
             JOptionPane.showMessageDialog(this, "Utilisateur inscrit : " + username);
+            System.out.println("Fenêtre de connexion affichée.");
             new SignIn();
         });
+
     }
 
     public static void main(String[] args) {

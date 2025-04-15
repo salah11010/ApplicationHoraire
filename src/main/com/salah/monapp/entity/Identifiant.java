@@ -1,4 +1,5 @@
-package com.salah.monapp.entity;
+package main.com.salah.monapp.entity;
+
 
 public class Identifiant {
     private String username;
