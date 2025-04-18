@@ -79,6 +79,8 @@ public class SignIn extends JFrame {
             for(Identifiant identifiant : identifiants) {
                 if(identifiant.verifier(usernameInput, passwordInput) == true) {
                     JOptionPane.showMessageDialog(null, "Accès réussi.");
+                    frame.dispose();
+                    MainInterface mainInterface = new MainInterface();
                     return;
                 };
             }
